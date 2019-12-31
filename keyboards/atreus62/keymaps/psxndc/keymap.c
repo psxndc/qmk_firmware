@@ -11,6 +11,9 @@
 #define _FUNC 1
 #define _RESET 2
 
+#define CS_FUNC LM(_FUNC, MOD_LCTL | MOD_LSFT)
+#define CA_FUNC LM(_FUNC, MOD_LCTL | MOD_LALT)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* QWERTY
@@ -29,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,        KC_Q,    KC_W,    KC_F,    KC_P,     KC_B,                        KC_J,     KC_L,     KC_U,    KC_Y,    KC_QUOT, KC_SCLN ,
     SFT_T(KC_BSPC),KC_A,    KC_R,    KC_S,    KC_T,     KC_G,                        KC_K,     KC_N,     KC_E,    KC_I,    KC_O,    RSFT_T(KC_BSPC),
     KC_LSFT,       KC_Z,    KC_X,    KC_C,    KC_D,     KC_V,                        KC_M,     KC_H,     KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL,       KC_LGUI, KC_LALT, KC_APP,  KC_BSPC,  MO(_FUNC), KC_SPC,  KC_SPC,  MO(_FUNC),KC_BSPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT 
+    KC_LCTL,       KC_LGUI, KC_LALT, KC_APP,  CS_FUNC,  MO(_FUNC), KC_SPC,  KC_SPC,  MO(_FUNC),CA_FUNC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT 
   ),
 
   [_FUNC] = LAYOUT(
@@ -37,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS,    KC_F11,  KC_F12,  _______, _______, _______,                     KC_PSCR, KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______,
     _______,    KC_LCBR, KC_LBRC, KC_LPRN, KC_MINS, KC_EQL,                      KC_NLCK, KC_P4,   KC_P5,   KC_P6,   KC_PDOT, KC_MUTE,
     _______,    KC_RCBR, KC_RBRC, KC_RPRN, KC_UNDS, KC_PLUS,                     _______, KC_P1,   KC_P2,   KC_P3,   KC_BSLS, KC_MPLY ,
-    _______,    _______, _______, _______, _______, _______, _______,  _______,  _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT 
+    _______,    _______, _______, _______, _______, _______, KC_ENT,  KC_ENT,  _______, _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT 
   ),
 
 
