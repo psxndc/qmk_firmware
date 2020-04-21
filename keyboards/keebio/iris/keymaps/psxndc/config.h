@@ -20,9 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef RGBLED_NUM
 #define RGBLED_NUM 12
 #define RGBLIGHT_SPLIT {6, 6}
-#define RGBLIGHT_ANIMATIONS
-//#define RGBLIGHT_EFFECT_BREATHING
-//#define RGBLIGHT_SINGLE_STATIC
+//#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_BREATHING
+#define RGBLIGHT_SINGLE_STATIC
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
@@ -33,7 +33,14 @@ Don't need to define the number of encoders or pads because the Iris config does
 #define NUMBER_OF_ENCODERS 1
 #define ENCODERS_PAD_A { B12 }
 #define ENCODERS_PAD_B { B13 }
-*/
+
 #define ENCODER_RESOLUTION 1
+*/
 
 #define BREATHING_PERIOD 6
+
+#define TAPPING_TERM 150
+
+#define AUTO_SHIFT_TIMEOUT 165
+#define NO_AUTO_SHIFT_SPECIAL
+#define NO_AUTO_SHIFT_NUMERIC
