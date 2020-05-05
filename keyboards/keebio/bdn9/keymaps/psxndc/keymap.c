@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         KC_ENTER     , GLHF            , KC_MPLY,
         GG           , GRTHEALS        , RGB_MOD,
-        LT(1, KC_TAB), LT(2, KC_ENTER) , RGB_TOG
+        LT(1, KC_TAB), LT(2, KC_ESC) ,  RGB_TOG
     ),
     /*
         | RESET          | N/A  | Media Stop |
