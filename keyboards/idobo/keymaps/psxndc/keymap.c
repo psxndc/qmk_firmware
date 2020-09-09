@@ -61,11 +61,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_CM] = LAYOUT_ortho_5x15( // Colemak DH
-    KC_ESC,  		 KC_1,    KC_2,    KC_3,     KC_4,      KC_5,   KC_MINS, KC_GRV,  KC_EQL,  KC_6,   KC_7,      KC_8,    KC_9,    KC_0,    KC_DEL, \
-    KC_TAB,          KC_Q,    KC_W,    KC_F,     KC_P,      KC_B,   KC_7,    KC_8,    KC_9,   KC_J,   KC_L,      KC_U,    KC_Y,    KC_QUOT, KC_BSPC, \
-    LCTL_T(KC_BSPC), KC_A,    KC_R,    KC_S,     KC_T,      KC_G,   KC_4,    KC_5,    KC_6,   KC_K,   KC_N,      KC_E,    KC_I,    KC_O,    RALT_T(KC_SCLN), \
-    KC_LSFT, 		 KC_Z,    KC_X,    KC_C,     KC_D,      KC_V,   KC_1,    KC_2,    KC_3,   KC_M,   KC_H,      KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-    KC_LCTL, 		 KC_LGUI, KC_LALT, MO(_WRD), MO(_LOWER),KC_SPC, KC_SPC, KC_0,     KC_SPC, KC_SPC, MO(_RAISE),KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT   \
+    KC_ESC,  		 KC_1,    KC_2,    KC_3,     KC_4,      KC_5,      KC_MINS, KC_GRV,  KC_EQL, KC_6,       KC_7,   KC_8,    KC_9,    KC_0,    KC_DEL, \
+    KC_TAB,          KC_Q,    KC_W,    KC_F,     KC_P,      KC_B,      KC_7,    KC_8,    KC_9,   KC_J,       KC_L,   KC_U,    KC_Y,    KC_QUOT, KC_BSPC, \
+    LCTL_T(KC_BSPC), KC_A,    KC_R,    KC_S,     KC_T,      KC_G,      KC_4,    KC_5,    KC_6,   KC_K,       KC_N,   KC_E,    KC_I,    KC_O,    RALT_T(KC_SCLN), \
+    KC_LSFT, 		 KC_Z,    KC_X,    KC_C,     KC_D,      KC_V,      KC_1,    KC_2,    KC_3,   KC_M,       KC_H,   KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
+    KC_LCTL, 		 KC_LGUI, KC_LALT, KC_SPC,   MO(_WRD),  MO(_LOWER),KC_SPC,  KC_0,    KC_SPC, MO(_RAISE), KC_SPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT   \
  ),
 
 
