@@ -35,9 +35,15 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
-#define TAPPING_TERM 150
+
+//#define TAPPING_TERM 225
+//#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 
 #define AUTO_SHIFT_TIMEOUT 165
 #define NO_AUTO_SHIFT_SPECIAL
 #define NO_AUTO_SHIFT_NUMERIC
+#define C6_AUDIO
+#define NO_MUSIC_MODE
+
 

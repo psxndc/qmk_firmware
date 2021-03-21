@@ -15,10 +15,10 @@
  */
 #include QMK_KEYBOARD_H
 
-enum custom_keycodes {
-  GG = SAFE_RANGE,
-  GRTHEALS,
-  GLHF
+enum encoder_names {
+  _LEFT,
+  _RIGHT,
+  _MIDDLE,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -29,9 +29,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Left              | Down | Right              |
      */
     [0] = LAYOUT(
-        KC_ENTER     , GLHF            , KC_MPLY,
-        GG           , GRTHEALS        , RGB_MOD,
-        LT(1, KC_TAB), LT(2, KC_ENTER) , RGB_TOG
+        KC_MUTE, MO(1), KC_MPLY,
+        KC_VOLU, KC_MPLY, KC_MUTE,
+        KC_VOLD, LT(2, RGB_TOG), KC_ESC
     ),
     /*
         | RESET          | N/A  | Media Stop |
@@ -39,82 +39,57 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Media Previous | End  | Media Next |
      */
     [1] = LAYOUT(
-        RESET  , KC_END,  KC_STOP,
-        AU_TOG , BL_STEP, RGB_MOD,
-        _______, KC_MPRV ,KC_MNXT
+        RESET  , _______, KC_STOP,
+        RGB_VAI, KC_MPRV, KC_MNXT,
+        RGB_VAD, RGB_MOD, KC_TILD  
     ),
-	
 	[2] = LAYOUT(
-        RESET  , RGB_HUI,  KC_STOP,
-        RGB_SAI, RGB_HUD,  RGB_VAI,
-        RGB_SAD, _______ , RGB_VAD
+        RESET  , _______, KC_STOP,
+        RGB_SPI, KC_MPRV, KC_MNXT,
+        RGB_SPD, _______, KC_TILD  
     ),
 };
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
+    if (index == _LEFT) {
         if (clockwise) {
-            tap_code(KC_TAB);
-        } else {
-            tap_code(KC_TAB);
-        }
-    }
-    else if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
             tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
         }
     }
-}
+    else if (index == _MIDDLE) {
+        if (clockwise) {
+            tap_code(KC_DOWN);
+        } else {
+            tap_code(KC_UP);
+        }
+    }
+    else if (index == _RIGHT) {
+		switch(biton32(layer_state)){
+            case 1:
+                if (clockwise) {
+					rgblight_increase_speed();
+				} else {
+					rgblight_decrease_speed();
+				}
+                break;
+            case 2:
+                if (clockwise) {
+					tap_code(KC_VOLU);
+				} else {
+					tap_code(KC_VOLD);
+				}
+                break;
+            default:
+                if (clockwise) {
+                    tap_code(KC_PGUP);
+                } else {
+                    tap_code(KC_PGDN);
+                }
+                break;
+      }       
+	}
 
-#ifdef AUDIO_ENABLE
-float tone_home[][2] = SONG(QWERTY_SOUND);
-#endif
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case KC_HOME:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_home);
-        #endif
-      }
-      return false;
-      break;
-	case GG:
-      if (record->event.pressed) {
-        // when keycode GG is pressed
-        SEND_STRING(SS_TAP(X_ENTER));
-		_delay_ms(500);
-		SEND_STRING("GG all. Well played!");
-      } else {
-        // when keycode GG is released
-      } 
-	  return false;
-      break;
-    case GRTHEALS:
-      if (record->event.pressed) {
-        // when keycode GRTHEALS is pressed
-        SEND_STRING(SS_TAP(X_ENTER));
-		_delay_ms(500);
-		SEND_STRING("Thnx for the heals!");
-      } else {
-        // when keycode GRTHEALS is released
-      }
-	  return false;
-      break;
-	case GLHF:
-      if (record->event.pressed) {
-        // when keycode GLHF is pressed
-        SEND_STRING(SS_TAP(X_ENTER));
-		_delay_ms(500);
-		SEND_STRING("Good luck and have fun!");
-      } else {
-        // when keycode GLHF is released
-      } 
-	  return false;
-      break;
-  }
-  return true;
+	   
 }

@@ -1,5 +1,3 @@
-SRC += muse.c
-
 RGBLIGHT_ENABLE = yes
 AUTO_SHIFT_ENABLE = no
 AUDIO_ENABLE = yes
